@@ -15,7 +15,7 @@ import postings from './postings';
 //Root Entities for normalization json schema
 const initialEntitiesState = {
   accounts: {},
-  posts: {},
+  ecocases: {},
   comments: {}
 };
 

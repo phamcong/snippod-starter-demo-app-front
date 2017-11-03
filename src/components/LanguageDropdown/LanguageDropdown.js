@@ -60,7 +60,7 @@ export default class LanguageDropdown extends Component {
         <i className="world icon" />
         <div className="menu">
           <div className="item" data-value="en">English</div>
-          <div className="item" data-value="ko">한국어</div>
+          <div className="item" data-value="fr">Francais</div>
         </div>
       </div>
     );

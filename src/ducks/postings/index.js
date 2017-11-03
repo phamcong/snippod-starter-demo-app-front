@@ -1,33 +1,33 @@
 const debug = require('utils/getDebugger')('postings');
 import { combineReducers } from 'redux';
 import paginate from 'helpers/paginate';
-import { POSTS_BY_SORTING_OPTION_ARRAY, IO_POST_AT_POSTS_BY_SORTING_OPTION_ARRAY,
-  POSTS_BY_ACCOUNT_ARRAY, IO_POST_AT_POSTS_BY_ACCOUNT_ARRAY } from './posts';
-import { COMMENTS_BY_POST_ARRAY, IO_COMMENT_AT_COMMENTS_BY_POST_ARRAY,
+import { ECOCASES_BY_SORTING_OPTION_ARRAY, IO_ECOCASE_AT_ECOCASES_BY_SORTING_OPTION_ARRAY,
+  ECOCASES_BY_ACCOUNT_ARRAY, IO_ECOCASE_AT_ECOCASES_BY_ACCOUNT_ARRAY } from './ecocases';
+import { COMMENTS_BY_ECOCASE_ARRAY, IO_COMMENT_AT_COMMENTS_BY_ECOCASE_ARRAY,
   COMMENTS_BY_ACCOUNT_ARRAY, IO_COMMENT_AT_COMMENTS_BY_ACCOUNT_ARRAY } from './comments';
 
-export const POSTS_BY_SORTING_OPTION = 'postsBySortingOption';
-export const POSTS_BY_ACCOUNT = 'postsByAccount';
-export const COMMENTS_BY_POST = 'commentsByPost';
+export const ECOCASES_BY_SORTING_OPTION = 'ecocasesBySortingOption';
+export const ECOCASES_BY_ACCOUNT = 'ecocasesByAccount';
+export const COMMENTS_BY_ECOCASE = 'commentsByEcocase';
 export const COMMENTS_BY_ACCOUNT = 'commentsByAccount';
 
 const postings = combineReducers({
-  [POSTS_BY_SORTING_OPTION]: paginate({
+  [ECOCASES_BY_SORTING_OPTION]: paginate({
     mapActionToKey: action => action.key,
-    types: POSTS_BY_SORTING_OPTION_ARRAY,
-    subTypes: IO_POST_AT_POSTS_BY_SORTING_OPTION_ARRAY
+    types: ECOCASES_BY_SORTING_OPTION_ARRAY,
+    subTypes: IO_ECOCASE_AT_ECOCASES_BY_SORTING_OPTION_ARRAY
   }),
 
-  [POSTS_BY_ACCOUNT]: paginate({
+  [ECOCASES_BY_ACCOUNT]: paginate({
     mapActionToKey: action => action.key,
-    types: POSTS_BY_ACCOUNT_ARRAY,
-    subTypes: IO_POST_AT_POSTS_BY_ACCOUNT_ARRAY
+    types: ECOCASES_BY_ACCOUNT_ARRAY,
+    subTypes: IO_ECOCASE_AT_ECOCASES_BY_ACCOUNT_ARRAY
   }),
 
-  [COMMENTS_BY_POST]: paginate({
+  [COMMENTS_BY_ECOCASE]: paginate({
     mapActionToKey: action => action.key,
-    types: COMMENTS_BY_POST_ARRAY,
-    subTypes: IO_COMMENT_AT_COMMENTS_BY_POST_ARRAY
+    types: COMMENTS_BY_ECOCASE_ARRAY,
+    subTypes: IO_COMMENT_AT_COMMENTS_BY_ECOCASE_ARRAY
   }),
 
   [COMMENTS_BY_ACCOUNT]: paginate({

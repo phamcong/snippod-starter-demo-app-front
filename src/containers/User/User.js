@@ -7,10 +7,10 @@ import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-i
 
 import { Link } from 'react-router';
 import { UserCard } from 'components';
-import { Posts, Comments } from 'containers';
+import { Ecocases, Comments } from 'containers';
 
-import { POSTS_BY_ACCOUNT, COMMENTS_BY_ACCOUNT } from 'ducks/postings';
-import { deleteAllAtPostsByAccount } from 'ducks/postings/posts';
+import { ECOCASES_BY_ACCOUNT, COMMENTS_BY_ACCOUNT } from 'ducks/postings';
+import { deleteAllAtEcocasesByAccount } from 'ducks/postings/ecocases';
 import { fetchAccount } from 'ducks/accounts/accounts';
 
 const radiumStyles = require('theme/RadiumStyles');
@@ -45,7 +45,7 @@ const mapStateToProps = createSelector([
 
 @connect(
   mapStateToProps,
-  { fetchAccount, deleteAllAtPostsByAccount }
+  { fetchAccount, deleteAllAtEcocasesByAccount }
 )
 @injectIntl
 @Radium
@@ -56,7 +56,7 @@ export default class User extends Component {
     account: PropTypes.object,
     params: PropTypes.object.isRequired,
     fetchAccount: PropTypes.func.isRequired,
-    deleteAllAtPostsByAccount: PropTypes.func.isRequired
+    deleteAllAtEcocasesByAccount: PropTypes.func.isRequired
   };
 
   constructor() {
@@ -89,7 +89,7 @@ export default class User extends Component {
   }
 
   refreshComments() {
-    this.props.deleteAllAtPostsByAccount(this.props.account.id);
+    this.props.deleteAllAtEcocasesByAccount(this.props.account.id);
   }
 
   renderUserCard(account) {
@@ -130,8 +130,8 @@ export default class User extends Component {
     const accountDom = account ? (
       <div id="capture-and-fire">
         {this.renderUserCard(account)}
-        <div className="post-list" style={styles.postsCardContainer}>
-          <Posts type={POSTS_BY_ACCOUNT} option={account.id} />
+        <div className="ecocase-list" style={styles.ecocasesCardContainer}>
+          <Ecocases type={ECOCASES_BY_ACCOUNT} option={account.id} />
         </div>
       </div>
     ) : null;

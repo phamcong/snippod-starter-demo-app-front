@@ -18,13 +18,13 @@ export default class UpvoteButton extends Component {
   constructor() {
     super();
     this.state = { isVoting: false };
-    this._upvotePost = this._upvotePost.bind(this);
-    this._cancelUpvotePost = this._cancelUpvotePost.bind(this);
+    this._upvoteEcocase = this._upvoteEcocase.bind(this);
+    this._cancelUpvoteEcocase = this._cancelUpvoteEcocase.bind(this);
     this._onClick = this._onClick.bind(this);
   }
 
   @throttle(1000)
-  _upvotePost() {
+  _upvoteEcocase() {
     this.setState({ isVoting: true });
     return new Promise((resolve, reject) => {
       this.props.onUpvoteClick(this.props.node.id)
@@ -38,7 +38,7 @@ export default class UpvoteButton extends Component {
   }
 
   @throttle(1000)
-  _cancelUpvotePost() {
+  _cancelUpvoteEcocase() {
     this.setState({ isVoting: true });
     return new Promise((resolve, reject) => {
       this.props.onCancelUpvoteClick(this.props.node.id)
@@ -53,10 +53,10 @@ export default class UpvoteButton extends Component {
 
   _onClick() {
     if (!this.props.node.isUpvotedMe) {
-      return this._upvotePost();
+      return this._upvoteEcocase();
     }
     if (this.props.node.isUpvotedMe) {
-      return this._cancelUpvotePost();
+      return this._cancelUpvoteEcocase();
     }
   }
 

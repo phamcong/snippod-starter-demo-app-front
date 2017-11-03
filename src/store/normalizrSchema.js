@@ -12,11 +12,11 @@ const userSchema = new Schema('users', {
   idAttribute: 'id'
 });
 
-const postSchema = new Schema('posts', {
+const ecocaseSchema = new Schema('ecocases', {
   idAttribute: 'id'
 });
 
-postSchema.define({
+ecocaseSchema.define({
   author: userSchema
 });
 
@@ -32,8 +32,8 @@ commentSchema.define({
 export const Schemas = {
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
-  POST: postSchema,
-  POST_ARRAY: arrayOf(postSchema),
-  COMMENT: postSchema,
+  ECOCASE: ecocaseSchema,
+  ECOCASE_ARRAY: arrayOf(ecocaseSchema),
+  COMMENT: ecocaseSchema,
   COMMENT_ARRAY: arrayOf(commentSchema)
 };

@@ -1,13 +1,13 @@
-const title = 'Snippod Starter Demo Application';
+const title = 'ALIENNOR Platform';
 const description = 'All the modern best practices in one example.';
 const image = 'https://react-redux.herokuapp.com/logo.jpg';
 
 const head = {
   title,
-  titleTemplate: '%s | Snippod Starter Demo',
+  titleTemplate: '%s | Ecocase platform',
   //base: { 'target': '_blank', 'href': 'http://shalomeir.com/' },
   link: [
-    { 'rel': 'canonical', 'href': 'http://shalomeir.com/' },
+    { 'rel': 'canonical', 'href': 'http://aliennor.fr/' },
     //{ 'rel': 'apple-touch-icon', 'sizes': '57x57', 'href': '/favicon/apple-icon-57x57.png' },
     //{ 'rel': 'apple-touch-icon', 'sizes': '60x60', 'href': '/favicon/apple-icon-60x60.png' },
     //{ 'rel': 'apple-touch-icon', 'sizes': '72x72', 'href': '/favicon/apple-icon-72x72.png' },

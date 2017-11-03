@@ -5,7 +5,7 @@ const styles = {
     marginTop: '3rem'
   },
 
-  postsCardContainer: {
+  ecocasesCardContainer: {
 
   },
 

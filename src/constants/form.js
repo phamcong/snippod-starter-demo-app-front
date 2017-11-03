@@ -13,7 +13,7 @@ const form = {
     descriptionMaxLength: 320,
   },
 
-  postsForm: {
+  ecocasesForm: {
     titleMinLength: 6,
     titleMaxLength: 110,
   },

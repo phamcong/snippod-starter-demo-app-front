@@ -3,15 +3,15 @@ import { updateEntity } from 'ducks/globalActions';
 import { showDelayedToastMessage } from 'ducks/messages/toastMessage';
 import toastMessages from 'i18nDefault/toastMessages';
 import Schemas from 'ducks/Schemas';
-import { COMMENTS_BY_POST, COMMENTS_BY_ACCOUNT } from 'ducks/postings';
+import { COMMENTS_BY_ECOCASE, COMMENTS_BY_ACCOUNT } from 'ducks/postings';
 
 
 /********************************
           get comment
  ********************************/
-const COMMENT_REQUEST = 'posts/comments/COMMENT_REQUEST';
-const COMMENT_SUCCESS = 'posts/comments/COMMENT_SUCCESS';
-const COMMENT_FAILURE = 'posts/comments/COMMENT_FAILURE';
+const COMMENT_REQUEST = 'ecocases/comments/COMMENT_REQUEST';
+const COMMENT_SUCCESS = 'ecocases/comments/COMMENT_SUCCESS';
+const COMMENT_FAILURE = 'ecocases/comments/COMMENT_FAILURE';
 
 export const COMMENT_ARRAY = [
   COMMENT_REQUEST,
@@ -47,9 +47,9 @@ export function loadComment(commentId, requiredFields = []) {
 /********************************
         submit comment
  ********************************/
-const SUBMIT_COMMENT_REQUEST = 'posts/comments/SUBMIT_COMMENT_REQUEST';
-const SUBMIT_COMMENT_SUCCESS = 'posts/comments/SUBMIT_COMMENT_SUCCESS';
-const SUBMIT_COMMENT_FAILURE = 'posts/comments/SUBMIT_COMMENT_FAILURE';
+const SUBMIT_COMMENT_REQUEST = 'ecocases/comments/SUBMIT_COMMENT_REQUEST';
+const SUBMIT_COMMENT_SUCCESS = 'ecocases/comments/SUBMIT_COMMENT_SUCCESS';
+const SUBMIT_COMMENT_FAILURE = 'ecocases/comments/SUBMIT_COMMENT_FAILURE';
 
 export const SUBMIT_COMMENT_ARRAY = [
   SUBMIT_COMMENT_REQUEST,
@@ -63,7 +63,7 @@ export function submitComment(submitCommentForm) {
     types: SUBMIT_COMMENT_ARRAY,
     promise: (client) => client.post('/comments/', {
       data: {
-        post: submitCommentForm.postId,
+        ecocase: submitCommentForm.ecocaseId,
         content: submitCommentForm.content
       },
       schema: Schemas.COMMENT
@@ -74,9 +74,9 @@ export function submitComment(submitCommentForm) {
 /********************************
           delete Comment
  ********************************/
-const DELETE_COMMENT_REQUEST = 'posts/comments/DELETE_COMMENT_REQUEST';
-const DELETE_COMMENT_SUCCESS = 'posts/comments/DELETE_COMMENT_SUCCESS';
-const DELETE_COMMENT_FAILURE = 'posts/comments/DELETE_COMMENT_FAILURE';
+const DELETE_COMMENT_REQUEST = 'ecocases/comments/DELETE_COMMENT_REQUEST';
+const DELETE_COMMENT_SUCCESS = 'ecocases/comments/DELETE_COMMENT_SUCCESS';
+const DELETE_COMMENT_FAILURE = 'ecocases/comments/DELETE_COMMENT_FAILURE';
 
 export const DELETE_COMMENT_ARRAY = [
   DELETE_COMMENT_REQUEST,
@@ -112,9 +112,9 @@ export function deleteComment(commentId) {
 /********************************
           upvote comment
  ********************************/
-const UPVOTE_COMMENT_REQUEST = 'posts/posts/UPVOTE_COMMENT_REQUEST';
-const UPVOTE_COMMENT_SUCCESS = 'posts/posts/UPVOTE_COMMENT_SUCCESS';
-const UPVOTE_COMMENT_FAILURE = 'posts/posts/UPVOTE_COMMENT_FAILURE';
+const UPVOTE_COMMENT_REQUEST = 'ecocases/ecocases/UPVOTE_COMMENT_REQUEST';
+const UPVOTE_COMMENT_SUCCESS = 'ecocases/ecocases/UPVOTE_COMMENT_SUCCESS';
+const UPVOTE_COMMENT_FAILURE = 'ecocases/ecocases/UPVOTE_COMMENT_FAILURE';
 
 export const UPVOTE_COMMENT_ARRAY = [
   UPVOTE_COMMENT_REQUEST,
@@ -132,11 +132,11 @@ export function upvoteComment(commentId) {
 }
 
 /********************************
-        cancel upvote post
+        cancel upvote ecocase
  ********************************/
-const CANCEL_UPVOTE_COMMENT_REQUEST = 'posts/posts/CANCEL_UPVOTE_COMMENT_REQUEST';
-const CANCEL_UPVOTE_COMMENT_SUCCESS = 'posts/posts/CANCEL_UPVOTE_COMMENT_SUCCESS';
-const CANCEL_UPVOTE_COMMENT_FAILURE = 'posts/posts/CANCEL_UPVOTE_COMMENT_FAILURE';
+const CANCEL_UPVOTE_COMMENT_REQUEST = 'ecocases/ecocases/CANCEL_UPVOTE_COMMENT_REQUEST';
+const CANCEL_UPVOTE_COMMENT_SUCCESS = 'ecocases/ecocases/CANCEL_UPVOTE_COMMENT_SUCCESS';
+const CANCEL_UPVOTE_COMMENT_FAILURE = 'ecocases/ecocases/CANCEL_UPVOTE_COMMENT_FAILURE';
 
 export const CANCEL_UPVOTE_COMMENT_ARRAY = [
   CANCEL_UPVOTE_COMMENT_REQUEST,
@@ -154,34 +154,34 @@ export function cancelUpvoteComment(commentId) {
 }
 
 /********************************
-  get commentsByPost pagination
+  get commentsByEcocase pagination
  ********************************/
-const COMMENTS_BY_POST_REQUEST = 'posts/comments/COMMENTS_BY_POST_REQUEST';
-const COMMENTS_BY_POST_SUCCESS = 'posts/comments/COMMENTS_BY_POST_SUCCESS';
-const COMMENTS_BY_POST_FAILURE = 'posts/comments/COMMENTS_BY_POST_FAILURE';
+const COMMENTS_BY_ECOCASE_REQUEST = 'ecocases/comments/COMMENTS_BY_ECOCASE_REQUEST';
+const COMMENTS_BY_ECOCASE_SUCCESS = 'ecocases/comments/COMMENTS_BY_ECOCASE_SUCCESS';
+const COMMENTS_BY_ECOCASE_FAILURE = 'ecocases/comments/COMMENTS_BY_ECOCASE_FAILURE';
 
-export const COMMENTS_BY_POST_ARRAY = [
-  COMMENTS_BY_POST_REQUEST,
-  COMMENTS_BY_POST_SUCCESS,
-  COMMENTS_BY_POST_FAILURE
+export const COMMENTS_BY_ECOCASE_ARRAY = [
+  COMMENTS_BY_ECOCASE_REQUEST,
+  COMMENTS_BY_ECOCASE_SUCCESS,
+  COMMENTS_BY_ECOCASE_FAILURE
 ];
 
-const ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_POST = 'posts/comments/ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_POST';
-const ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_POST = 'posts/comments/ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_POST';
-const DELETE_COMMENT_AT_COMMENTS_BY_POST = 'posts/comments/DELETE_COMMENT_AT_COMMENTS_BY_POST';
-const DELETE_ALL_AT_COMMENTS_BY_POST = 'posts/comments/DELETE_ALL_AT_COMMENTS_BY_POST';
+const ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ECOCASE = 'ecocases/comments/ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ECOCASE';
+const ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ECOCASE = 'ecocases/comments/ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ECOCASE';
+const DELETE_COMMENT_AT_COMMENTS_BY_ECOCASE = 'ecocases/comments/DELETE_COMMENT_AT_COMMENTS_BY_ECOCASE';
+const DELETE_ALL_AT_COMMENTS_BY_ECOCASE = 'ecocases/comments/DELETE_ALL_AT_COMMENTS_BY_ECOCASE';
 
-export const IO_COMMENT_AT_COMMENTS_BY_POST_ARRAY = [
-  ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_POST,
-  ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_POST,
-  DELETE_COMMENT_AT_COMMENTS_BY_POST,
-  DELETE_ALL_AT_COMMENTS_BY_POST
+export const IO_COMMENT_AT_COMMENTS_BY_ECOCASE_ARRAY = [
+  ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ECOCASE,
+  ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ECOCASE,
+  DELETE_COMMENT_AT_COMMENTS_BY_ECOCASE,
+  DELETE_ALL_AT_COMMENTS_BY_ECOCASE
 ];
 
-function fetchCommentsByPost(postId, nextPageUrl) {
+function fetchCommentsByEcocase(ecocaseId, nextPageUrl) {
   return {
-    key: postId,
-    types: COMMENTS_BY_POST_ARRAY,
+    key: ecocaseId,
+    types: COMMENTS_BY_ECOCASE_ARRAY,
     promise: (client) => client.get(nextPageUrl, {
       schema: Schemas.COMMENT_ARRAY
     })
@@ -189,58 +189,58 @@ function fetchCommentsByPost(postId, nextPageUrl) {
 }
 
 // Relies on Redux Thunk middleware.
-export function loadCommentsByPost(postId, nextPage) {
+export function loadCommentsByEcocase(ecocaseId, nextPage) {
   return (dispatch, getState) => {
     const {
-      nextPageUrl = '/post/' + postId + '/comments/',
+      nextPageUrl = '/ecocase/' + ecocaseId + '/comments/',
       pageCount = 0
-      } = getState().postings.commentsByPost[postId] || {};
+      } = getState().postings.commentsByEcocase[ecocaseId] || {};
 
     if (pageCount > 0 && !nextPage) {
       return null;
     }
 
-    return dispatch(fetchCommentsByPost(postId, nextPageUrl));
+    return dispatch(fetchCommentsByEcocase(ecocaseId, nextPageUrl));
   };
 }
 
-export function addCommentToTopAtCommentsByPost(postId, id) {
+export function addCommentToTopAtCommentsByEcocase(ecocaseId, id) {
   return {
-    key: postId,
-    type: ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_POST,
+    key: ecocaseId,
+    type: ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ECOCASE,
     id
   };
 }
 
-export function addCommentToBottomAtCommentsByPost(postId, id) {
+export function addCommentToBottomAtCommentsByEcocase(ecocaseId, id) {
   return {
-    key: postId,
-    type: ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_POST,
+    key: ecocaseId,
+    type: ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ECOCASE,
     id
   };
 }
 
-export function deleteCommentAtCommentsByPost(postId, id) {
+export function deleteCommentAtCommentsByEcocase(ecocaseId, id) {
   return {
-    key: postId,
-    type: DELETE_COMMENT_AT_COMMENTS_BY_POST,
+    key: ecocaseId,
+    type: DELETE_COMMENT_AT_COMMENTS_BY_ECOCASE,
     id
   };
 }
 
-export function deleteAllAtCommentsByPost(postId = null) {
+export function deleteAllAtCommentsByEcocase(ecocaseId = null) {
   return {
-    key: postId,
-    type: DELETE_ALL_AT_COMMENTS_BY_POST,
+    key: ecocaseId,
+    type: DELETE_ALL_AT_COMMENTS_BY_ECOCASE,
   };
 }
 
 /********************************
  get commentsByAccount pagination
  ********************************/
-const COMMENTS_BY_ACCOUNT_REQUEST = 'posts/comments/COMMENTS_BY_ACCOUNT_REQUEST';
-const COMMENTS_BY_ACCOUNT_SUCCESS = 'posts/comments/COMMENTS_BY_ACCOUNT_SUCCESS';
-const COMMENTS_BY_ACCOUNT_FAILURE = 'posts/comments/COMMENTS_BY_ACCOUNT_FAILURE';
+const COMMENTS_BY_ACCOUNT_REQUEST = 'ecocases/comments/COMMENTS_BY_ACCOUNT_REQUEST';
+const COMMENTS_BY_ACCOUNT_SUCCESS = 'ecocases/comments/COMMENTS_BY_ACCOUNT_SUCCESS';
+const COMMENTS_BY_ACCOUNT_FAILURE = 'ecocases/comments/COMMENTS_BY_ACCOUNT_FAILURE';
 
 export const COMMENTS_BY_ACCOUNT_ARRAY = [
   COMMENTS_BY_ACCOUNT_REQUEST,
@@ -248,10 +248,10 @@ export const COMMENTS_BY_ACCOUNT_ARRAY = [
   COMMENTS_BY_ACCOUNT_FAILURE
 ];
 
-const ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ACCOUNT = 'posts/comments/ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ACCOUNT';
-const ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ACCOUNT = 'posts/comments/ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ACCOUNT';
-const DELETE_COMMENT_AT_COMMENTS_BY_ACCOUNT = 'posts/comments/DELETE_COMMENT_AT_COMMENTS_BY_ACCOUNT';
-const DELETE_ALL_AT_COMMENTS_BY_ACCOUNT = 'posts/comments/DELETE_ALL_AT_COMMENTS_BY_ACCOUNT';
+const ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ACCOUNT = 'ecocases/comments/ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ACCOUNT';
+const ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ACCOUNT = 'ecocases/comments/ADD_COMMENT_TO_BOTTOM_AT_COMMENTS_BY_ACCOUNT';
+const DELETE_COMMENT_AT_COMMENTS_BY_ACCOUNT = 'ecocases/comments/DELETE_COMMENT_AT_COMMENTS_BY_ACCOUNT';
+const DELETE_ALL_AT_COMMENTS_BY_ACCOUNT = 'ecocases/comments/DELETE_ALL_AT_COMMENTS_BY_ACCOUNT';
 
 export const IO_COMMENT_AT_COMMENTS_BY_ACCOUNT_ARRAY = [
   ADD_COMMENT_TO_TOP_AT_COMMENTS_BY_ACCOUNT,
@@ -324,8 +324,8 @@ export function deleteAllAtCommentsByAccount(accountId = null) {
 export function loadComments(type, option, nextPage) {
   return (dispatch, getState) => {
     switch (type) {
-      case COMMENTS_BY_POST :
-        return dispatch(loadCommentsByPost(option, nextPage));
+      case COMMENTS_BY_ECOCASE :
+        return dispatch(loadCommentsByEcocase(option, nextPage));
       case COMMENTS_BY_ACCOUNT :
         return dispatch(loadCommentsByAccount(option, nextPage));
       default:
@@ -337,7 +337,7 @@ export function loadComments(type, option, nextPage) {
 export function insertCommentToCommentsPagination(id) {
   return (dispatch, getState) => {
     const comment = getState().entities.comments[id];
-    dispatch(addCommentToTopAtCommentsByPost(comment.post, id));
+    dispatch(addCommentToTopAtCommentsByEcocase(comment.ecocase, id));
     dispatch(addCommentToTopAtCommentsByAccount(comment.author.id, id));
   };
 }

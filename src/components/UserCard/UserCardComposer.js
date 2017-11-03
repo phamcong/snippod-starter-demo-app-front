@@ -27,7 +27,7 @@ import i18nUserCard from 'i18nDefault/components/userCard';
 const i18n = i18nUserCard;
 
 @reduxForm({
-  form: 'post',
+  form: 'ecocase',
   fields: ['username', 'description'],
   validate: userValidation
 }, (state, props) => ({ // mapStateToProps

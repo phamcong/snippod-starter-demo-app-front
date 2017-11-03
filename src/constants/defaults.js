@@ -16,7 +16,7 @@ const defaults = {
 
   localesMyAppSupports: [
     'en',
-    'ko'
+    'fr'
   ]
 
 };

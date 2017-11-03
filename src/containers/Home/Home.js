@@ -6,9 +6,9 @@ import { createSelector } from 'reselect';
 import { Link } from 'react-router';
 
 import IntroCard from './IntroCard/IntroCard';
-import { PostComposer, PostsHeader, Posts } from 'containers';
+import { EcocaseComposer, EcocasesHeader, Ecocases } from 'containers';
 
-import { POSTS_BY_SORTING_OPTION } from 'ducks/postings';
+import { ECOCASES_BY_SORTING_OPTION } from 'ducks/postings';
 import { pushQuery } from 'ducks/application/application';
 
 const styles = require('./HomeStyles');
@@ -80,10 +80,10 @@ export default class Home extends Component {
       <div className="home ui text container main-container">
         <Helmet title="Home"/>
         <IntroCard />
-        <PostComposer auth={auth} style={styles.postComposer}/>
-        <PostsHeader sortingOption={this.state.sortingOption}
+        <EcocaseComposer auth={auth} style={styles.postComposer}/>
+        <EcocasesHeader sortingOption={this.state.sortingOption}
                      changeSortingOption={this.changeSortingOption} />
-        <Posts type={POSTS_BY_SORTING_OPTION} option={this.state.sortingOption} />
+        <Ecocases type={ECOCASES_BY_SORTING_OPTION} option={this.state.sortingOption} />
       </div>
     );
   }
